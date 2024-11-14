@@ -31,6 +31,10 @@ export const routes: Routes = [
     loadComponent:()=>import('./auth/login/login.component')
   },
   {
+    path: 'upload',
+    loadComponent:()=>import('./components/upload1/upload1.component')
+  },
+  {
     path:'**',
     redirectTo:'dashboard'
   }

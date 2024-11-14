@@ -1,0 +1,62 @@
+<div
+  class="file-upload-wrapper"
+  [class.success]="uploadSuccess"
+  [class.error]="uploadError"
+  (drop)="onFileDrop($event)"
+  (dragover)="onDragOver($event)"
+>
+  <input
+    type="file"
+    accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+    (change)="onFileChange($event)"
+    hidden
+    #fileInput
+  />
+  <div class="file-dropper" (click)="fileInput.click()">
+    <mat-icon>upload</mat-icon>
+    <p>{{ "Subir Archivo"  }}</p>
+
+</div>
+</div>
+
+@if(imageName()){
+  <div>
+  @if(selectedFile || !!imagePreview){
+    <div>
+
+      <mat-toolbar>
+        @if(isImage()){
+          <img
+          [src]="imagePreview()"
+          alt="Image Preview"
+          class="image-preview"
+          width="30 px"
+        />
+
+        }
+
+        @if(isPDF()){
+          <mat-icon >picture_as_pdf</mat-icon>
+        }
+
+
+      <span class="example-spacer"></span>
+        <span class="image-name">{{ imageName() }}</span> ({{
+          fileSize()
+        }} KB)
+        <span class="example-spacer"></span>
+        <button mat-icon-button (click)="removeImage()" class="delete-icon example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-toolbar>
+
+
+    </div>
+
+  }@else {
+
+  }
+</div>
+
+}
